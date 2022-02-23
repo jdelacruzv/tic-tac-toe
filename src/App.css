@@ -26,7 +26,7 @@ body {
 .square {
   background-color: #1C1C1C;
   color: #ddd;
-  border: 1px solid #B1032C;
+  border: 1px solid #ddd;
   float: left;
   font-size: 48px;
   font-weight: bold;
@@ -37,6 +37,7 @@ body {
   padding: 0;
   text-align: center;
   width: 94px;
+  cursor: crosshair;
 }
 
 .square:focus {
@@ -52,4 +53,24 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.btn-container {
+  margin-top: 2em;
+}
+
+.btn-reset {
+  font-size: 1.8rem;
+  padding: 0.3em;
+  border-radius: 5px;
+  width: 280px;
+  background-color: #B1032C;
+  color: #ddd;
+  border: 1px solid #B1032C;
+  cursor: pointer;
+}
+
+.btn-reset:hover {
+  background-color: #5f0419;
+  border: 1px solid #5f0419;
 }

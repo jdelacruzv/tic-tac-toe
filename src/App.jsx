@@ -9,11 +9,26 @@ const Square = ({ value, onClick }) => {
 	);
 };
 
+const ButtonReset = ({ value, onClick }) => {
+	return (
+		<button className="btn-reset" onClick={onClick}>
+			{value}
+		</button>
+	);
+};
+
 const Board = () => {
 	const [state, setState] = useState({
 		squares: Array(9).fill(null),
 		xIsNext: true,
 	});
+
+	const handleClickReset = () => {
+		setState({			
+			squares: Array(9).fill(null),
+			xIsNext: true
+		});
+	};
 
 	const handleClick = (i) => {
 		const squares = state.squares.slice();
@@ -23,7 +38,7 @@ const Board = () => {
 		squares[i] = state.xIsNext ? "X" : "O";
 		setState({
 			squares, // squares: squares,
-			xIsNext: !state.xIsNext,
+			xIsNext: !state.xIsNext
 		});
 	};
 
@@ -56,6 +71,9 @@ const Board = () => {
 				{renderSquare(6)}
 				{renderSquare(7)}
 				{renderSquare(8)}
+			</div>
+			<div className="btn-container">
+				<ButtonReset value={"play again"} onClick={handleClickReset} />
 			</div>
 		</div>
 	);
