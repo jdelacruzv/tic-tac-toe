@@ -16,7 +16,6 @@ const Board = () => {
 	});
 
 	const handleClick = (i) => {
-		//
 		const squares = state.squares.slice();
 		if (calculateWinner(squares) || squares[i]) {
 			return;
