@@ -1,0 +1,19 @@
+.btnContainer {
+  margin-top: 2em;
+}
+
+.btnReset {
+  font-size: 1.8rem;
+  padding: 0.3em;
+  border-radius: 5px;
+  width: 280px;
+  background-color: #B1032C;
+  border: 1px solid #B1032C;
+  color: #ddd;
+  cursor: pointer;
+}
+
+.btnReset:hover {
+  background-color: #5f0419;
+  border: 1px solid #5f0419;
+}

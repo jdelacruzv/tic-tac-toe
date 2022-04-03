@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
 import App from './App';
-import './index.css';
+import './styles/index.css';
 
-const container = document.getElementById("root");
+const container = document.getElementById('root');
 ReactDOM.render(<App />, container);

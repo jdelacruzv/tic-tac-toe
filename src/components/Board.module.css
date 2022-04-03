@@ -1,0 +1,11 @@
+.status {
+  font-size: 2rem;
+  margin: 1em 0.5em;
+  text-align: center;
+}
+
+.boardRow:after {
+  clear: both;
+  content: "";
+  display: table;
+}
