@@ -4,8 +4,7 @@
   text-align: center;
 }
 
-.boardRow:after {
-  clear: both;
-  content: "";
-  display: table;
+.grid {
+  display: grid;
+  grid-template-columns: 94px 94px 94px;
 }

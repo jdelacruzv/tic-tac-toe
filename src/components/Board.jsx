@@ -21,6 +21,7 @@ const calculateWinner = squares => {
 			return squares[a];
 		}
 	}
+	
 	return null;
 };
 
@@ -44,30 +45,26 @@ const Board = () => {
 
 	const titleStatus = () => {
 		const winner = calculateWinner(state.squares);
-		return (winner) ? `Winner: ${winner}` : `Next player: ${state.xIsNext ? 'X' : 'O'}`;
+		return winner
+			? `Winner: ${winner}`
+			: `Next player: ${state.xIsNext ? 'X' : 'O'}`;
 	};
 
-	const renderSquare = i => <Square value={state.squares[i]} onClick={() => handleClickSquares(i)} />;
+	const positions = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
 	return (
 		<div>
 			<h1 className={style.status}>{titleStatus()}</h1>
-			<div className={style.boardRow}>
-				{renderSquare(0)}
-				{renderSquare(1)}
-				{renderSquare(2)}
+			<div className={style.grid}>
+				{positions.map(pos => (
+					<Square
+						key={pos}
+						value={state.squares[pos]}
+						onClick={() => handleClickSquares(pos)}
+					/>
+				))}
 			</div>
-			<div className={style.boardRow}>
-				{renderSquare(3)}
-				{renderSquare(4)}
-				{renderSquare(5)}
-			</div>
-			<div className={style.boardRow}>
-				{renderSquare(6)}
-				{renderSquare(7)}
-				{renderSquare(8)}
-			</div>
-			<Button value={'play again'} onClick={handleClickReset} />
+			<Button value={'play again'} onClick={() => handleClickReset()} />
 		</div>
 	);
 };
