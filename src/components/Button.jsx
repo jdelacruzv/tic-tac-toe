@@ -1,11 +1,9 @@
 import style from './Button.module.css';
 
 const Button = ({ value, onClick }) => (
-	<div className={style.btnContainer}>
-		<button className={style.btnReset} onClick={onClick}>
-			{value}
-		</button>
-	</div>
+	<button className={style.reset} onClick={onClick}>
+		{value}
+	</button>
 );
 
 export default Button;
