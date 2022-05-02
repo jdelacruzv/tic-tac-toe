@@ -19,7 +19,6 @@ const calculateWinner = (squares) => {
 	for (let i = 0; i < LINES.length; i++) {
 		const [a, b, c] = LINES[i];
 		if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-			console.log('Array linea:', LINES[i]);
 			return squares[a];
 		}
 	}
@@ -35,31 +34,26 @@ const initialSquares = {
 const Board = () => {
 	const [state, setState] = useState(initialSquares);
 
-	const handleClickReset = () => {
-		setState({
-			...initialSquares 
-		})
-	};
+	const handleResetClick = () => setState({ ...initialSquares });
 
 	const titleStatus = () => {
 		const winner = calculateWinner(state.squares);
-		console.log(winner);
 		return winner
 			? `Winner: ${winner}`
-			: `Next player: ${state.xIsNext ? 'X' : 'O'}`;
+			: !state.squares.includes(null)
+					? `Draw`
+					: `Next player: ${state.xIsNext ? 'X' : 'O'}`;
 	};
 
-	const handleClickSquares = i => {
+	const handleSquaresClick = (i) => {
 		// Crea una copia del array squares del objeto initialSquares
-		const squares = state.squares.slice();
+		const squares = state.squares.slice();		
 		// Ignora el click si alguien ganó o si un cuadrado está rellenado
-		if (calculateWinner(squares) || squares[i]) {
-			return;
-		};
+		if (calculateWinner(squares) || squares[i]) return;
 		squares[i] = state.xIsNext ? 'X' : 'O';
-		setState({ 
-			squares, 
-			xIsNext: !state.xIsNext 
+		setState({
+			squares,
+			xIsNext: !state.xIsNext
 		});
 	};
 
@@ -70,18 +64,18 @@ const Board = () => {
 		<div className={style.board}>
 			<h1 className={style.title}>{titleStatus()}</h1>
 			<div className={style.grid}>
-				{positions.map(pos => (
+				{positions.map(position => (
 					<Square
-						key={pos}
-						value={state.squares[pos]}
-						onClick={() => handleClickSquares(pos)}
+						key={position}
+						value={state.squares[position]}
+						handleClick={() => handleSquaresClick(position)}
 					/>
 				))}
 			</div>
-			<Button 
-				value={'play again'} 
-				onClick={() => handleClickReset()} 
-			/>
+			{calculateWinner(state.squares) 
+				? <Button handleClick={() => handleResetClick()} />
+				: !state.squares.includes(null) && <Button handleClick={() => handleResetClick()} /> 
+			}
 		</div>
 	);
 };

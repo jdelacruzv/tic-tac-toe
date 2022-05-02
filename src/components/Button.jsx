@@ -1,8 +1,8 @@
 import style from './Button.module.css';
 
-const Button = ({ value, onClick }) => (
-	<button className={style.reset} onClick={onClick}>
-		{value}
+const Button = ({ handleClick }) => (
+	<button className={style.reset} onClick={handleClick}>
+		play again
 	</button>
 );
 
