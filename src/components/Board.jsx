@@ -1,30 +1,8 @@
 import { useState } from 'react';
 import Button from './Button';
 import Square from './Square';
+import { calculateWinner } from '../helpers';
 import style from './Board.module.css';
-
-const calculateWinner = (squares) => {
-	const LINES = [
-		[0, 1, 2],
-		[3, 4, 5],
-		[6, 7, 8],
-		[0, 3, 6],
-		[1, 4, 7],
-		[2, 5, 8],
-		[0, 4, 8],
-		[2, 4, 6]
-	];
-
-	// Si hay un ganador devolverá 'X', 'O' o 'null' 
-	for (let i = 0; i < LINES.length; i++) {
-		const [a, b, c] = LINES[i];
-		if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-			return squares[a];
-		}
-	}
-	
-	return null;
-};
 
 const initialSquares = {
 	squares: Array(9).fill(null),
@@ -38,6 +16,7 @@ const Board = () => {
 
 	const titleStatus = () => {
 		const winner = calculateWinner(state.squares);
+		
 		return winner
 			? `Winner: ${winner}`
 			: !state.squares.includes(null)
@@ -55,6 +34,7 @@ const Board = () => {
 			squares,
 			xIsNext: !state.xIsNext
 		});
+		
 	};
 
 	// Obtiene las claves del array squares del objeto initialSquares
@@ -67,6 +47,7 @@ const Board = () => {
 				{positions.map(position => (
 					<Square
 						key={position}
+	
 						value={state.squares[position]}
 						handleClick={() => handleSquaresClick(position)}
 					/>
@@ -74,7 +55,7 @@ const Board = () => {
 			</div>
 			{calculateWinner(state.squares) 
 				? <Button handleClick={() => handleResetClick()} />
-				: !state.squares.includes(null) && <Button handleClick={() => handleResetClick()} /> 
+				: !state.squares.includes(null) && <Button handleClick={() => handleResetClick()} />
 			}
 		</div>
 	);
