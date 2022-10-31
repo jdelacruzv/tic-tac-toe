@@ -1,4 +1,4 @@
-import style from './Button.module.css';
+import style from "./Button.module.css";
 
 const Button = ({ handleClick }) => (
 	<button className={style.reset} onClick={handleClick}>
