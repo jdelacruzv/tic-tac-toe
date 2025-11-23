@@ -2,4 +2,4 @@
 
 You can play it at: https://jdelacruzv.github.io/tic-tac-toe/
 
-![alt text](image.png)
+![alt text](src/assets/image.png)
