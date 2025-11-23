@@ -1,0 +1,10 @@
+.footer {
+  text-align: center;
+  font-size: 14px;
+  color:rgb(151, 153, 155);
+  margin-top: 30px;
+}
+.footer p a {
+  color: #0969da;
+  text-decoration: none;
+}
